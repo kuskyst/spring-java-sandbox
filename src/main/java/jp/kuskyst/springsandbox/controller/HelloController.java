@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     // @Autowired
-    private HelloService helloService;
+    private final HelloService helloService;
 
     public HelloController(HelloService helloService) {
         this.helloService = helloService;
     }
 
     @GetMapping("/hello")
-    public String hello(@RequestParam(value = "name", defaultValue = "World")  String name) {
+    public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
         return this.helloService.hello(name);
     }
 
