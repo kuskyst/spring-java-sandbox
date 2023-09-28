@@ -1,0 +1,23 @@
+package jp.kuskyst.springsandbox.controller;
+
+import jp.kuskyst.springsandbox.service.HelloService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+
+    // @Autowired
+    private HelloService helloService;
+
+    public HelloController(HelloService helloService) {
+        this.helloService = helloService;
+    }
+
+    @GetMapping("/hello")
+    public String hello(@RequestParam(value = "name", defaultValue = "World")  String name) {
+        return this.helloService.hello(name);
+    }
+
+}
